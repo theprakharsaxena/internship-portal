@@ -5,7 +5,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
@@ -14,6 +13,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import AxiosClient from "../services/AxiosClient";
+import { Link } from "react-router-dom";
 
 function Copyright(props) {
   return (
@@ -24,9 +24,9 @@ function Copyright(props) {
       {...props}
     >
       {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
+      <a color="inherit" href="https://mui.com/">
         Your Website
-      </Link>{" "}
+      </a>{" "}
       {new Date().getFullYear()}
       {"."}
     </Typography>
@@ -84,6 +84,7 @@ export default function SignIn() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
+          <Link to="/admin">ADMIN</Link>
           <Box
             component="form"
             onSubmit={handleSubmit}
@@ -128,14 +129,14 @@ export default function SignIn() {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
+                <a href="#" variant="body2">
                   Forgot password?
-                </Link>
+                </a>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <a href="#" variant="body2">
                   {"Don't have an account? Sign Up"}
-                </Link>
+                </a>
               </Grid>
             </Grid>
           </Box>

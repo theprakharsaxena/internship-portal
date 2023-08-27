@@ -13,8 +13,6 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useDispatch } from "react-redux";
-import loginapi from "../services/authentication/loginapi";
-import { addUser } from "../redux/slice/userSlice";
 import { useNavigate } from "react-router-dom";
 import AxiosClient from "../services/AxiosClient";
 
@@ -63,8 +61,6 @@ export default function SignIn() {
       });
       if (data.success) {
         localStorage.setItem("userId", data?.user._id);
-        dispatch(authActions.login());
-        toast.success("User login Successfully");
         navigate("/");
       }
     } catch (error) {

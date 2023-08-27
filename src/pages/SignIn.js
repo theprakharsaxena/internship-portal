@@ -16,6 +16,7 @@ import { useDispatch } from "react-redux";
 import loginapi from "../services/authentication/loginapi";
 import { addUser } from "../redux/slice/userSlice";
 import { useNavigate } from "react-router-dom";
+import AxiosClient from "../services/AxiosClient";
 
 function Copyright(props) {
   return (
@@ -53,17 +54,17 @@ export default function SignIn() {
     }));
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      const data = await loginapi({
+      const { data } = await AxiosClient.post("/api/v1/user/login", {
         email: inputs.email,
         password: inputs.password,
       });
       if (data.success) {
         localStorage.setItem("userId", data?.user._id);
-        dispatch(addUser(data));
-        // toast.success("User login Successfully");
+        dispatch(authActions.login());
+        toast.success("User login Successfully");
         navigate("/");
       }
     } catch (error) {

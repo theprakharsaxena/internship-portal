@@ -21,9 +21,9 @@ const Routes = () => {
       <Switch>
         <Route path="/" element={<PublicRoutes uid={uid} url={url} />}>
           <Route path="/" element={<SignIn />} />
-          <Route path="/admin" element={<SignIn />} />
-          <Route path="/register" element={<SignUp />} />
         </Route>
+        <Route path="/admin" element={<SignIn />} />
+        <Route path="/register" element={<SignUp />} />
         <Route path="/" element={<MainRoutesProtected uid={uid} url={url} />}>
           <Route path="/dashboard" element={<Dashboard />}></Route>
         </Route>

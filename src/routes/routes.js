@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 import PublicRoutes from "./protectedRoutes/publicRoutes";
 import Dashboard from "../pages/Dashboard/dashboard";
 import MainRoutesProtected from "./protectedRoutes/mainRoutesProtected";
-import HomePage from "../pages/user/HomePage";
 
 const Routes = () => {
   const [url, setUrl] = useState("/");
@@ -20,8 +19,8 @@ const Routes = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="" element={<PublicRoutes uid={uid} url={url} />}>
-          <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<PublicRoutes uid={uid} url={url} />}>
+          <Route path="/" element={<SignIn />} />
           <Route path="/admin" element={<SignIn />} />
           <Route path="/register" element={<SignUp />} />
         </Route>

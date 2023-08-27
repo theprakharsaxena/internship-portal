@@ -10,6 +10,4 @@ AxiosClient.defaults.headers = {
   "Content-Type": "application/json",
 };
 
-AxiosClient.defaults.withCredentials = true;
-
 export default AxiosClient;

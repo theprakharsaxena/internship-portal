@@ -41,7 +41,6 @@ export default function SignIn() {
     email: "",
     password: "",
   });
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   //handle input change

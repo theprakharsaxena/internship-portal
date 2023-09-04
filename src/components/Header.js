@@ -8,12 +8,16 @@ import {
   IconButton,
 } from "@mui/material";
 import { AccountCircle, ExitToApp, Lock } from "@mui/icons-material";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { removeUser } from "../redux/slice/userSlice";
+import { useNavigate } from "react-router-dom";
+import { removeBlogs } from "../redux/slice/blogSlice";
 
 const Header = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const userValue = useSelector((state) => state.user.value);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -25,14 +29,16 @@ const Header = () => {
 
   const handleLogOut = () => {
     handleClose();
+    // dispatch(removeBlogs());
     dispatch(removeUser());
+    navigate("/admin");
   };
 
   return (
     <AppBar position="static">
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          Admin Panel
+          Hi, {userValue?.username}
         </Typography>
         <div>
           <IconButton

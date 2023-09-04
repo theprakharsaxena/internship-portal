@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -14,6 +14,11 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import AxiosClient from "../services/AxiosClient";
 import { Link } from "react-router-dom";
+import loginapi from "../services/authentication/loginapi";
+import { useDispatch, useSelector } from "react-redux";
+import { addUser } from "../redux/slice/userSlice";
+import { toast } from "react-hot-toast";
+import CircularProgressIndicator from "../common/Loadable/CircularProgressIndicator";
 
 function Copyright(props) {
   return (
@@ -36,11 +41,15 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
+  const userValue = useSelector((state) => state.user.value);
+  const uid = userValue?._id;
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
   });
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   //handle input change
   const handleChange = (e) => {
@@ -53,96 +62,112 @@ export default function SignIn() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await AxiosClient.post("/api/v1/user/login", {
+      const data = await loginapi({
         email: inputs.email,
         password: inputs.password,
       });
       if (data.success) {
-        localStorage.setItem("userId", data?.user._id);
-        navigate("/");
+        setLoading(false);
+        toast.success("User Login Successfully");
+        dispatch(addUser(data?.user));
+        navigate("/dashboard");
       }
     } catch (error) {
+      setLoading(false);
       console.log(error);
     }
   };
 
+  useEffect(() => {}, []);
+
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign in
-          </Typography>
-          <Link to="/admin">ADMIN</Link>
+    <>
+      <CircularProgressIndicator loading={loading} />
+      {!uid ? (
+        <Container component="main" maxWidth="xs">
+          <CssBaseline />
           <Box
-            component="form"
-            onSubmit={handleSubmit}
-            noValidate
-            sx={{ mt: 1 }}
+            sx={{
+              marginTop: 8,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
           >
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              type="email"
-              autoComplete="email"
-              value={inputs.email}
-              onChange={handleChange}
-              autoFocus
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              value={inputs.password}
-              onChange={handleChange}
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              Sign in
+            </Typography>
+            <Link to="/admin">ADMIN</Link>
+            <Box
+              component="form"
+              onSubmit={(e) => {
+                setLoading(true);
+                handleSubmit(e);
+              }}
+              noValidate
+              sx={{ mt: 1 }}
             >
-              Sign In
-            </Button>
-            <Grid container>
-              <Grid item xs>
-                <a href="https://zoho.com" variant="body2">
-                  Forgot password?
-                </a>
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                type="email"
+                autoComplete="email"
+                value={inputs.email}
+                onChange={handleChange}
+                autoFocus
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                value={inputs.password}
+                onChange={handleChange}
+              />
+              <FormControlLabel
+                control={<Checkbox value="remember" color="primary" />}
+                label="Remember me"
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+              >
+                Sign In
+              </Button>
+              <Grid container>
+                <Grid item xs>
+                  <a href="https://zoho.com" variant="body2">
+                    Forgot password?
+                  </a>
+                </Grid>
+                <Grid item>
+                  <a href="https://zoho.com" variant="body2">
+                    {"Don't have an account? Sign Up"}
+                  </a>
+                </Grid>
               </Grid>
-              <Grid item>
-                <a href="https://zoho.com" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </a>
-              </Grid>
-            </Grid>
+            </Box>
           </Box>
+          <Copyright sx={{ mt: 8, mb: 4 }} />
+        </Container>
+      ) : (
+        <Box sx={{display:"flex",justifyContent:"center",alignItems:"center",height:"100vh",flexDirection:"column"}}>
+          <Link to="/">BACK TO HOME PAGE</Link>
+          <Link style={{marginTop:"20px"}} to="/dashboard">GO TO DASHBOARD PAGE</Link>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
-      </Container>
-    </ThemeProvider>
+      )}
+    </>
   );
 }

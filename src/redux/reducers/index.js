@@ -1,9 +1,9 @@
-import { combineReducers } from 'redux';
-import userReducer from '../slice/userSlice';
-import counterReducer from '../slice/counterSlice';
+import { combineReducers } from "redux";
+import userReducer from "../slice/userSlice";
+import blogReducer from "../slice/blogSlice";
 
 const rootReducer = combineReducers({
-  counter: counterReducer,
+  blog: blogReducer,
   user: userReducer,
 });
 

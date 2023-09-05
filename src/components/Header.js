@@ -6,11 +6,12 @@ import {
   Menu,
   MenuItem,
   IconButton,
+  Box,
 } from "@mui/material";
 import { AccountCircle, ExitToApp, Lock } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
 import { removeUser } from "../redux/slice/userSlice";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { removeBlogs } from "../redux/slice/blogSlice";
 
 const Header = () => {
@@ -37,9 +38,12 @@ const Header = () => {
   return (
     <AppBar position="static">
       <Toolbar>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          Hi, {userValue?.username}
-        </Typography>
+        <Box sx={{ flexGrow: 1,display:"flex",alignItems:'center' }}>
+          <Link style={{marginRight:"10px",fontSize:"16px"}} to="/">{`<- Home`}</Link>
+          <Typography variant="h6" component="div">
+            Hi, {userValue?.username}
+          </Typography>
+        </Box>
         <div>
           <IconButton
             id="header-menu-button"

@@ -3,18 +3,10 @@ import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   Box,
-  Button,
-  Card,
-  CardActionArea,
-  CardContent,
-  CardMedia,
   Grid,
-  InputLabel,
-  TextField,
   Typography,
 } from "@mui/material";
 import getSingleBlog from "../../services/blog/getSingleblog";
-import updateBlog from "../../services/blog/updateBlog";
 import BlogNavBar from "../../components/BlogNavbar";
 import { useSelector } from "react-redux";
 

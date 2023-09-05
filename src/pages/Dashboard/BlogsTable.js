@@ -82,7 +82,7 @@ const BlogsTable = () => {
   };
 
   const handleCloseDialogEdit = () => {
-    setNewData({ title: "", image: "", description: "" })
+    setNewData({ title: "", image: "", description: "" });
     setOpenDialogEdit(false);
   };
 
@@ -90,10 +90,10 @@ const BlogsTable = () => {
     const file = e.target.files[0];
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("upload_preset", process.env.PRESET_KEY || "utmou7yo");
+    formData.append("upload_preset", "utmou7yo");
     try {
       const data = await uploadImage({
-        cloudName: process.env.CLOUD_NAME || "dhpm2tifg",
+        cloudName: "dhpm2tifg",
         tempFormData: formData,
       });
       if (data?.asset_id) {
@@ -136,7 +136,7 @@ const BlogsTable = () => {
     }
   };
 
-  console.log("USER",user?._id);
+  console.log("USER", user?._id);
 
   const handleUpdate = async (e) => {
     e.preventDefault();

@@ -148,15 +148,15 @@ export default function SignIn() {
               </Button>
               <Grid container>
                 <Grid item xs>
-                  <a href="https://zoho.com" variant="body2">
-                    Forgot password?
-                  </a>
+                  <Link to="/register" variant="body2">
+                    Register?
+                  </Link>
                 </Grid>
-                <Grid item>
+                {/* <Grid item>
                   <a href="https://zoho.com" variant="body2">
                     {"Don't have an account? Sign Up"}
                   </a>
-                </Grid>
+                </Grid> */}
               </Grid>
             </Box>
           </Box>

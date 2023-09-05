@@ -138,6 +138,8 @@ const BlogsTable = () => {
     }
   };
 
+  console.log("USER",user?._id);
+
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {

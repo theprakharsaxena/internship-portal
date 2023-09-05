@@ -1,6 +1,5 @@
 // src/components/Table.js
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import {
   Button,
   TableContainer,
@@ -14,7 +13,6 @@ import {
   DialogTitle,
   DialogContent,
   TextField,
-  Input,
 } from "@mui/material";
 import { useSelector } from "react-redux";
 import Editor from "../../components/Editor";

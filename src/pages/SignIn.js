@@ -10,9 +10,7 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
-import AxiosClient from "../services/AxiosClient";
 import { Link } from "react-router-dom";
 import loginapi from "../services/authentication/loginapi";
 import { useDispatch, useSelector } from "react-redux";
@@ -37,8 +35,6 @@ function Copyright(props) {
     </Typography>
   );
 }
-
-const defaultTheme = createTheme();
 
 export default function SignIn() {
   const userValue = useSelector((state) => state.user.value);

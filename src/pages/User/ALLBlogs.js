@@ -17,7 +17,7 @@ const ALLBlogs = () => {
 
   return (
     <>
-      <AllBlogsNavbar/>
+      <AllBlogsNavbar />
       <Grid container spacing={5} marginY={2} marginX={1}>
         {allBlogs?.blogs.map((item, index) => (
           <Grid

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../../components/NavBar";
 import { useSelector } from "react-redux";
@@ -20,6 +20,30 @@ const HomePage = () => {
   return (
     <>
       <NavBar />
+      <Grid container spacing={5} marginY={2} marginX={1}>
+        <Grid item xs={7}>
+          <Grid container marginRight={5}>
+            <Grid item xs={4}>
+              <img src="/slider1.png" height={250} />
+            </Grid>
+            <Grid item xs={8} height={250}>
+              <Typography height="100%" display="flex" justifyContent="start" alignItems="center" fontSize="24px" fontWeight="900">
+                Your one-stop solution for all your jobs and internship-related
+                queries.
+              </Typography>
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid item xs={5}>
+          <a
+            href="https://topmate.io/shivam_raghuvanshi"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img src="/topmate.jpeg" height={200} />
+          </a>
+        </Grid>
+      </Grid>
       <Grid container spacing={5} marginY={2} marginX={1}>
         {allBlogs?.blogs.map((item, index) => (
           <Grid
@@ -59,13 +83,11 @@ const HomePage = () => {
               About US
             </Typography>
             <Typography>
-              At Intern Freak We Post Daily updates on internships and job
-              postings! Our vision is to empower the youth of our nation and
-              make them Atmanirbhar (Self-dependent). By providing them with all
-              kinds of opportunities from various sectors, sharing knowledge and
-              make them competent enough so that they could excel in any field.
-              If you have any query regrading Site, Advertisement and any other
-              issue, please feel free to contact at support@internfreak.co
+              We are a group of Engineers helping others to win in life by
+              providing the best mentorship and guidance for internships and
+              placements in Top MNCs and Fortune 500 companies by conducting
+              FREE Mock Interviews, 1:1 Sessions, Resume reviews, Coding
+              Contests and Personal Mentoring.
             </Typography>
           </Box>
         </Box>
@@ -76,7 +98,16 @@ const HomePage = () => {
             <Typography variant="h4" fontWeight="bold">
               Get in touch
             </Typography>
-            <Typography color="gray">Email : support@internfreak.co</Typography>
+            <Typography color="gray">
+              LinkedIn :{" "}
+              <a
+                href="https://www.linkedin.com/company/connect-with-mind/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                MIND-Mentoring In New Dimensions
+              </a>
+            </Typography>
             <Typography>
               <Button>Send Message</Button>
             </Typography>

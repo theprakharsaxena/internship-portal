@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
-import {
-  Box,
-  Grid,
-  Typography,
-} from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import getSingleBlog from "../../services/blog/getSingleblog";
 import BlogNavBar from "../../components/BlogNavbar";
 import { useSelector } from "react-redux";
+
+const handleLinkClick = ({ id }) => {
+  window.open(`/blog/${id}`, "_blank");
+};
 
 const Blog = () => {
   const allBlogs = useSelector((state) => state.blog.value);
@@ -86,8 +86,9 @@ const Blog = () => {
             xs={12}
             key={index}
             onClick={() => {
-              toast.success("Scroll To Top");
-              navigate(`/blog/${item._id}`);
+              // toast.success("Scroll To Top");
+              // navigate(`/blog/${item._id}`);
+              handleLinkClick({ id: item._id });
             }}
           >
             <div style={{ cursor: "pointer" }}>

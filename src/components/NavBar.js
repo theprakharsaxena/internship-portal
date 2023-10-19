@@ -36,7 +36,7 @@ const NavBar = () => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" color="inherit">
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           <Link
@@ -47,26 +47,32 @@ const NavBar = () => {
             }}
             to="/"
           >
-            <img src="/logo.webp" height={50} />
-            <Typography variant="h6" color="white">
-              INTERNFREAK
+            <img src="/logo.jpeg" height={50} />
+            <Typography
+              variant="h6"
+              color="black"
+              fontWeight="900"
+              marginTop="2px"
+              marginLeft="1rem"
+            >
+              Mentoring In New Dimensions
             </Typography>
           </Link>
         </Typography>
         <Box sx={{ display: "flex", textDecoration: "none" }}>
-          <Link style={{ marginLeft: "20px" }} to="/">
+          <Link style={{ marginLeft: "20px", color: "black" }} to="/">
             HOME
           </Link>
-          <a style={{ marginLeft: "20px" }} href="#aboutus">
+          <a style={{ marginLeft: "20px", color: "black" }} href="#aboutus">
             ABOUT US
           </a>
-          <a style={{ marginLeft: "20px" }} href="#contactus">
+          <a style={{ marginLeft: "20px", color: "black" }} href="#contactus">
             CONTACT US
           </a>
-          <Link style={{ marginLeft: "20px" }} to="/allblogs">
+          <Link style={{ marginLeft: "20px", color: "black" }} to="/allblogs">
             JOBS | INTERNSHIPS
           </Link>
-          <Link style={{ marginLeft: "20px" }} to="/admin">
+          <Link style={{ marginLeft: "20px", color: "black" }} to="/admin">
             ADMIN
           </Link>
         </Box>

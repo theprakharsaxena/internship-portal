@@ -1,39 +1,7 @@
-import React from "react";
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Menu,
-  MenuItem,
-  IconButton,
-  Box,
-} from "@mui/material";
-import { AccountCircle, ExitToApp, Lock } from "@mui/icons-material";
-import { useDispatch, useSelector } from "react-redux";
-import { removeUser } from "../redux/slice/userSlice";
-import { Link, useNavigate } from "react-router-dom";
-import { removeBlogs } from "../redux/slice/blogSlice";
+import { AppBar, Toolbar, Typography, Box } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const userValue = useSelector((state) => state.user.value);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const handleLogOut = () => {
-    handleClose();
-    // dispatch(removeBlogs());
-    dispatch(removeUser());
-    navigate("/admin");
-  };
 
   return (
     <AppBar position="static" color="inherit">
@@ -47,7 +15,7 @@ const NavBar = () => {
             }}
             to="/"
           >
-            <img src="/logo.jpeg" height={50} />
+            <img src="/logo.jpeg" height={50} alt="logo"/>
             <Typography
               variant="h6"
               color="black"

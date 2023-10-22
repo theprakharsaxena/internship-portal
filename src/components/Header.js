@@ -12,7 +12,6 @@ import { AccountCircle, ExitToApp, Lock } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
 import { removeUser } from "../redux/slice/userSlice";
 import { Link, useNavigate } from "react-router-dom";
-import { removeBlogs } from "../redux/slice/blogSlice";
 
 const Header = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);

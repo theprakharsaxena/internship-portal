@@ -1,18 +1,8 @@
 import React from "react";
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Menu,
-  MenuItem,
-  IconButton,
-  Box,
-} from "@mui/material";
-import { AccountCircle, ExitToApp, Lock } from "@mui/icons-material";
+import { AppBar, Toolbar, Typography, Box } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { removeUser } from "../redux/slice/userSlice";
 import { Link, useNavigate } from "react-router-dom";
-import { removeBlogs } from "../redux/slice/blogSlice";
 
 const BlogNavBar = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);

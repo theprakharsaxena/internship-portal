@@ -1,4 +1,3 @@
-import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../../components/NavBar";
 import { useSelector } from "react-redux";
@@ -24,7 +23,7 @@ const HomePage = () => {
         <Grid item xs={7}>
           <Grid container marginRight={5}>
             <Grid item xs={4}>
-              <img src="/slider1.png" height={250} />
+              <img src="/slider1.png" height={250} alt="slider1"/>
             </Grid>
             <Grid item xs={8} height={250}>
               <Typography height="100%" display="flex" justifyContent="start" alignItems="center" fontSize="24px" fontWeight="900">
@@ -40,7 +39,7 @@ const HomePage = () => {
             target="_blank"
             rel="noreferrer"
           >
-            <img src="/topmate.jpeg" height={200} />
+            <img src="/topmate.jpeg" height={200} alt="topmate"/>
           </a>
         </Grid>
       </Grid>

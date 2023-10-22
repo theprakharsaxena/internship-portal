@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
-import toast from "react-hot-toast";
-import { useNavigate, useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { Box, Grid, Typography } from "@mui/material";
 import getSingleBlog from "../../services/blog/getSingleblog";
 import BlogNavBar from "../../components/BlogNavbar";
@@ -14,7 +13,6 @@ const Blog = () => {
   const allBlogs = useSelector((state) => state.blog.value);
   const [blog, setBlog] = useState({});
   const id = useParams().id;
-  const navigate = useNavigate();
   const [inputs, setInputs] = useState({});
   const [createdAt, setCreatedAt] = useState("");
 
@@ -53,7 +51,7 @@ const Blog = () => {
       <Box
         sx={{ display: "flex", justifyContent: "center", marginTop: "40px" }}
       >
-        <img src={inputs.image} height={150} />
+        <img src={inputs.image} height={150} alt={inputs.title}/>
       </Box>
       <Typography textAlign="center" marginY="30px" color="gray">
         {createdAt}

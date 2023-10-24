@@ -1,8 +1,5 @@
-import React from "react";
 import { AppBar, Toolbar, Typography, Box } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
-import { removeUser } from "../redux/slice/userSlice";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const AllBlogsNavbar = () => {
   return (
@@ -17,7 +14,7 @@ const AllBlogsNavbar = () => {
             }}
             to="/"
           >
-            <img src="/logo.jpeg" height={50} />
+            <img src="/logo.jpeg" height={50} alt="logo"/>
             <Typography
               variant="h6"
               color="black"

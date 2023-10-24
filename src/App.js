@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import Routes from "./routes/routes";
-import { Toaster, toast } from "react-hot-toast";
-import { useDispatch, useSelector } from "react-redux";
+import { Toaster } from "react-hot-toast";
+import { useDispatch } from "react-redux";
 import { addAllblogs } from "./redux/slice/blogSlice";
 import { useQueryGetAllBlogs } from "./query/getAllBlogs";
 import CircularProgressIndicator from "./common/Loadable/CircularProgressIndicator";
@@ -17,7 +17,6 @@ const handleLinkedInClick = () => {
 
 const App = () => {
   const dispatch = useDispatch();
-  const allBlogs = useSelector((state) => state.blog.value);
 
   const getAllBlog = useQueryGetAllBlogs();
 
@@ -25,7 +24,7 @@ const App = () => {
     if (!getAllBlog.isLoading) {
       dispatch(addAllblogs(getAllBlog?.data));
     }
-  }, [getAllBlog]);
+  }, [dispatch, getAllBlog]);
 
   return (
     <>
